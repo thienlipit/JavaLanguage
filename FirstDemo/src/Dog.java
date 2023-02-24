@@ -29,15 +29,4 @@ public class Dog extends DongVat {
     protected void onResult(String result) {
 
     }
-
-    @Override
-    void diTe() {
-
-    }
-
-    @Override
-    protected void diCafe() {
-
-    }
-
 }

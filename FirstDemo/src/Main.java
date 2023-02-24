@@ -1,20 +1,27 @@
 import com.mashape.unirest.http.exceptions.UnirestException;
-import dagiac.HinhChuNhat;
-import dagiac.HinhVuong;
-import dagiac.TamGiac;
-import nestedinnerclass.Laptop;
+import tax.StateTax;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.http.HttpClient;
 
 public class Main {
-    public static void main(String[] args) throws IOException, UnirestException {
+    public static void main(String[] args) {
         Cat cat = new Cat();
         Dog dog = new Dog();
+
+        dog.setActionListener(new AnimalAction() {
+            @Override
+            public void hearMasterCall() {
+                System.out.println("gau gau");
+            }
+        });
+
+        cat.setActionListener(new AnimalAction() {
+            @Override
+            public void hearMasterCall() {
+                System.out.println("meo meo");
+            }
+        });
+
 //        HinhChuNhat hinhChuNhat = new HinhChuNhat(4,3);
 //        HinhVuong hinhVuong = new HinhVuong(4);
 //        TamGiac tamGiac = new TamGiac(4, 5, 1);
@@ -31,19 +38,39 @@ public class Main {
 //        System.out.println(cpu.getTheHeCPU());
 
 
-//        System.out.println("--------------Cat------------------");
-//        cat.actions();
-//        System.out.printf("CAT:" + cat.type);
+        System.out.println("--------------Cat------------------");
+        System.out.println(cat.eat());
+        cat.actions();
+        System.out.printf("CAT: ");
 
-//        System.out.println("--------------Dog------------------");
-//        dog.actions();
-//        System.out.printf("CAT:" + dog.type);
-            Data data = new Data();
-            URL url;
-            String s = "https://dummyjson.com/products/1";
-            url = new URL(s);
-            data.getJson(url);
+        System.out.println("--------------Dog------------------");
+        dog.actions();
+
+        System.out.printf("DOG: ");
+        callAnimal(dog);
+        dog.removeActionListener();
+
+        callAnimal(cat);
+
+        StateTax HP = new StateTax() {
+            @Override
+            public double stateTax() {
+                return 1000;
+            }
+        };
+        calculateTax(HP);
 
         }
 
+    public static void callAnimal(DongVat dv) {
+        dv.callAnimal();
     }
+
+    static void calculateTax(StateTax stateTax){
+        double ct = 2000.0;
+        double st = stateTax.stateTax();
+        double total = ct + st;
+        System.out.println("Total tax = "+ total);
+    }
+
+}

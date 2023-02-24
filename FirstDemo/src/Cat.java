@@ -1,8 +1,8 @@
-public class Cat extends DongVat implements AnimalAction {
+public class Cat extends DongVat {
 
     public Cat() {
         super();
-        setActionListener(this);
+        // setActionListener(this);
     }
 
     @Override
@@ -35,23 +35,4 @@ public class Cat extends DongVat implements AnimalAction {
         System.out.println("on result: " + result);
     }
 
-    @Override
-    void diTe() {
-
-    }
-
-    @Override
-    protected void diCafe() {
-
-    }
-
-    @Override
-    public void eat(String food) {
-        System.out.println(food);
-    }
-
-    @Override
-    public void sleep(int milli) {
-
-    }
 }

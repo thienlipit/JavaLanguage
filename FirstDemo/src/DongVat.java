@@ -11,7 +11,7 @@ abstract class DongVat {
 
     public void actions() {
 
-        System.out.println("CAT:" +  eat());
+        System.out.println("CAT:" + eat());
 
         onResult("transfer result: before eat");
 
@@ -19,7 +19,7 @@ abstract class DongVat {
             System.out.println("sleep:" + sleep());
 
             if (actionListener != null) {
-                actionListener.eat(">>>> eat more");
+                // actionListener.eat(">>>> eat more");
             }
 
             hiddenAction();
@@ -42,22 +42,29 @@ abstract class DongVat {
         System.out.println("hidden action");
     }
 
-    public AnimalAction getActionListener() {
-        return actionListener;
+    public void removeActionListener() {
+        actionListener = null;
     }
 
     public void setActionListener(AnimalAction actionListener) {
         this.actionListener = actionListener;
     }
 
+    public void callAnimal() {
+        if (actionListener != null) {
+            actionListener.hearMasterCall();
+        }
+    }
+
     protected abstract void onCreate();
+
     protected abstract String initType();
+
     protected abstract String getParts();
+
     protected abstract String eat();
+
     protected abstract int sleep();
 
     protected abstract void onResult(String result);
-    abstract void diTe();
-
-    protected abstract void diCafe();
 }

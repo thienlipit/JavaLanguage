@@ -1,8 +1,6 @@
 import OOP.Den;
 import OOP.IGenericInterface;
-
-import java.util.Arrays;
-import java.util.Scanner;
+import tax.StateTax;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,10 +9,10 @@ public class Main {
 
         den.tatDen();
 
-        IGenericInterface<String> reverse = (str) ->{
-            String result="";
-            for (int i = str.length()-1; i>=0; i--){
-                result+= str.charAt(i);
+        IGenericInterface<String> reverse = (str) -> {
+            String result = "";
+            for (int i = str.length() - 1; i >= 0; i--) {
+                result += str.charAt(i);
             }
             return result;
         };
@@ -22,73 +20,81 @@ public class Main {
 
         IGenericInterface<Integer> factorial = (n) -> {
             int result = 1;
-            for(int i = 1; i<=n; i++){
+            for (int i = 1; i <= n; i++) {
                 result *= i;
             }
-            return  result;
+            return result;
         };
         System.out.println("Kết quả 5! = " + factorial.func(5));
 
-//        System.out.println("Hello world!");
-//        int a = 15;
-//        int b = 10;
-//        if (a>b){
-//            System.out.printf("%d, %d, \n", a, b);
-//        } else System.out.println("b >= a");
-//
-//        System.out.print("Nhập vào một số nguyên: ");
-//        Scanner input = new Scanner(System.in);
-//        String soInput = input.nextLine();
-//
-//        System.out.println("Số bạn vừa nhập là: " + soInput);
-//        char[] mangKyTu = {'t', 'u', 'h', 'o', 'c'};
-//        for (int i = 0; i < mangKyTu.length; i ++) {
-//            System.out.print(mangKyTu[i]);
-//        }
-//        for (char kyTu : mangKyTu
-//             ) {
-//            System.out.println(kyTu);
-//        }
-//        int[] diem = new int[10];
-//        int[] diem = {10, 8, 4, 8};
-//        diem[0] = 9;
-//        diem[3] = 10;
-//        for (int value : diem){
-//            System.out.print(value + " ");
-//        }
-//        System.out.println();
 
-//        int[][] a = {
-//                {2, 3, 4},
-//                {3, 4, 3, 5},
-//                {3},
-//        };
+        Cat cat = new Cat();
+        Dog dog = new Dog();
 
-//        for (int i = 0; i < 3; i ++){
-//            for (int j = 0; j < a[i].length; j ++){
-//                System.out.print(a[i][j] + " ");
-//            }
-//        }
-//
-//        for (int[] mangCon: a){
-//            for(int value: mangCon){
-//                System.out.print(value);
-//            }
-//        }
+        dog.setActionListener(new AnimalAction() {
+            @Override
+            public void hearMasterCall() {
+                System.out.println("gau gau");
+            }
+        });
 
-//        int index = 0;
-//        int[] diemToan = { 5, 6, 7, 8};
-//        int[] diemVan = new int[diemToan.length];
-//        for (int toan: diemToan){
+        cat.setActionListener(new AnimalAction() {
+            @Override
+            public void hearMasterCall() {
+                System.out.println("meo meo");
+            }
+        });
+
+//        HinhChuNhat hinhChuNhat = new HinhChuNhat(4,3);
+//        HinhVuong hinhVuong = new HinhVuong(4);
+//        TamGiac tamGiac = new TamGiac(4, 5, 1);
 //
-//            diemVan[index] = toan;
-//            ++index;
-//        }
 //
-//        for (int van : diemVan){
-//            System.out.println(van);
-//        }
-//        System.out.println(Arrays.toString(diemVan));
+//        tamGiac.tinhChuVi();
+//
+//        hinhChuNhat.soCanh();
+//        hinhChuNhat.tinhDienTich();
+//        hinhVuong.tinhDienTich();
+//
+//        Laptop hp = new Laptop();
+//        Laptop.CPU cpu = hp.new CPU();
+//        System.out.println(cpu.getTheHeCPU());
+
+
+        System.out.println("--------------Cat------------------");
+        System.out.println(cat.eat());
+        cat.actions();
+        System.out.printf("CAT: ");
+
+        System.out.println("--------------Dog------------------");
+        dog.actions();
+
+        System.out.printf("DOG: ");
+        callAnimal(dog);
+        dog.removeActionListener();
+
+        callAnimal(cat);
+
+        StateTax HP = new StateTax() {
+            @Override
+            public double stateTax() {
+                return 1000;
+            }
+        };
+        calculateTax(HP);
+
 
     }
+    public static void callAnimal(DongVat dv) {
+        dv.callAnimal();
+
+    }
+
+    static void calculateTax(StateTax stateTax){
+        double ct = 2000.0;
+        double st = stateTax.stateTax();
+        double total = ct + st;
+        System.out.println("Total tax = "+ total);
+    }
+
 }

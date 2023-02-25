@@ -6,9 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Den den = new Den();
         den.batDen(11);
-
         den.tatDen();
-
         IGenericInterface<String> reverse = (str) -> {
             String result = "";
             for (int i = str.length() - 1; i >= 0; i--) {
@@ -26,7 +24,6 @@ public class Main {
             return result;
         };
         System.out.println("Kết quả 5! = " + factorial.func(5));
-
 
         Cat cat = new Cat();
         Dog dog = new Dog();
@@ -87,7 +84,6 @@ public class Main {
     }
     public static void callAnimal(DongVat dv) {
         dv.callAnimal();
-
     }
 
     static void calculateTax(StateTax stateTax){

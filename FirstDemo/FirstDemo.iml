@@ -13,5 +13,6 @@
     <orderEntry type="library" name="com.mashape.unirest:unirest-java:1.4.9" level="project" />
     <orderEntry type="library" name="org.json:json:20180130" level="project" />
     <orderEntry type="library" name="commons-io:commons-io:2.11.0" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
   </component>
 </module>

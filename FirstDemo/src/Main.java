@@ -1,10 +1,30 @@
-import com.mashape.unirest.http.exceptions.UnirestException;
+import OOP.Den;
+import OOP.IGenericInterface;
 import tax.StateTax;
-
-import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        Den den = new Den();
+        den.batDen(11);
+        den.tatDen();
+        IGenericInterface<String> reverse = (str) -> {
+            String result = "";
+            for (int i = str.length() - 1; i >= 0; i--) {
+                result += str.charAt(i);
+            }
+            return result;
+        };
+        System.out.println("Đảo ngược Lambda = " + reverse.func("Lambda"));
+
+        IGenericInterface<Integer> factorial = (n) -> {
+            int result = 1;
+            for (int i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        };
+        System.out.println("Kết quả 5! = " + factorial.func(5));
+
         Cat cat = new Cat();
         Dog dog = new Dog();
 
@@ -60,8 +80,8 @@ public class Main {
         };
         calculateTax(HP);
 
-        }
 
+    }
     public static void callAnimal(DongVat dv) {
         dv.callAnimal();
     }
